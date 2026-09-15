@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <title>Pac-Run - El juego de Theo</title>
+  <title>Pac-Run - Theo's Game</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -268,18 +268,18 @@
 <body>
   <div id="rotate-overlay">
     <p style="font-size:48px">📱</p>
-    <p style="font-size:16px; color:#ffff00">Girá tu teléfono</p>
-    <p style="font-size:10px; color:#888">El juego se ve mejor en horizontal</p>
-    <button id="dismiss-rotate">Jugar así</button>
+    <p style="font-size:16px; color:#ffff00">Rotate your phone</p>
+    <p style="font-size:10px; color:#888">The game looks better in landscape</p>
+    <button id="dismiss-rotate">Play like this</button>
   </div>
 
   <div id="game-wrapper">
     <div id="game-area">
       <div id="hud">
-        <span>Puntos: <span class="hud-val" id="score-display">0</span></span>
+        <span>Score: <span class="hud-val" id="score-display">0</span></span>
         <span>Record: <span class="hud-val" id="hi-score-display">0</span></span>
-        <span>Vel: <span class="hud-val" id="speed-display">1</span></span>
-        <span>Vidas: <span class="hud-val" id="lives-display">♥♥♥</span></span>
+        <span>Speed: <span class="hud-val" id="speed-display">1</span></span>
+        <span>Lives: <span class="hud-val" id="lives-display">♥♥♥</span></span>
         <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
         <button class="hud-btn" id="pause-btn" onclick="togglePause()">⏸</button>
       </div>
@@ -287,15 +287,15 @@
         <canvas id="game" width="800" height="500"></canvas>
         <div id="overlay">
           <h1>PAC-RUN</h1>
-          <p style="font-size:14px; color:#ffff00; margin-bottom:8px">Dale Theo, vos podés!</p>
-          <p class="desktop-instructions">Usá <span class="key">↑</span><span class="key">↓</span><span class="key">←</span><span class="key">→</span> o <span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span> para moverte</p>
-          <p class="mobile-instructions" style="display:none">Usá el joystick para moverte</p>
-          <p class="hide-mobile">Comé nuggets para sumar puntos</p>
-          <p class="hide-mobile">¡Los baldes de KFC te dan poderes!</p>
-          <p>Esquivá los fantasmas, Theo. Vos sabés.</p>
-          <p style="color:#ff4444">¡No dejes que la pared te aplaste!</p>
-          <p class="desktop-instructions" style="color:#888; margin-top:6px"><span class="key">P</span> o <span class="key">Esc</span> para pausar</p>
-          <button id="start-btn">Jugar</button>
+          <p style="font-size:14px; color:#ffff00; margin-bottom:8px">Come on Theo, you can do it!</p>
+          <p class="desktop-instructions">Use <span class="key">↑</span><span class="key">↓</span><span class="key">←</span><span class="key">→</span> or <span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span> to move</p>
+          <p class="mobile-instructions" style="display:none">Use the joystick to move</p>
+          <p class="hide-mobile">Eat nuggets to score points</p>
+          <p class="hide-mobile">The KFC buckets give you powers!</p>
+          <p>Dodge the ghosts, Theo. You know how.</p>
+          <p style="color:#ff4444">Don't let the wall crush you!</p>
+          <p class="desktop-instructions" style="color:#888; margin-top:6px"><span class="key">P</span> or <span class="key">Esc</span> to pause</p>
+          <button id="start-btn">Play</button>
         </div>
       </div>
     </div>
@@ -1683,12 +1683,12 @@
         ctx.fillStyle = '#ffff00';
         ctx.shadowColor = '#ffff00';
         ctx.shadowBlur = 25 * SHADOW_MULT;
-        ctx.fillText(sec > 0 ? sec.toString() : '¡YA!', W / 2, H / 2 - 40);
+        ctx.fillText(sec > 0 ? sec.toString() : 'GO!', W / 2, H / 2 - 40);
         ctx.restore();
       }
 
       if (speedUpBanner) {
-        drawBannerText('¡MÁS RÁPIDO!', -15, '#ff4444', 28, speedUpBannerTimer / 90);
+        drawBannerText('SPEED UP!', -15, '#ff4444', 28, speedUpBannerTimer / 90);
         const a2 = speedUpBannerTimer / 90;
         ctx.save();
         ctx.globalAlpha = a2;
@@ -1697,7 +1697,7 @@
         ctx.fillStyle = '#ffff00';
         ctx.shadowColor = '#ffff00';
         ctx.shadowBlur = 10 * SHADOW_MULT;
-        ctx.fillText('Nivel ' + speedLevel, W / 2, H / 2 + 20);
+        ctx.fillText('Level ' + speedLevel, W / 2, H / 2 + 20);
         ctx.restore();
       }
 
@@ -1711,12 +1711,12 @@
         ctx.fillStyle = '#ff6600';
         ctx.shadowColor = '#ff6600';
         ctx.shadowBlur = 25 * SHADOW_MULT;
-        ctx.fillText('VIENE UN LABERINTO', W / 2, H / 2);
+        ctx.fillText('A MAZE IS COMING', W / 2, H / 2);
         ctx.restore();
       }
 
       if (mazeBanner) {
-        drawBannerText('LABERINTO SUPERADO!', -15, '#55ff55', 22, mazeBannerTimer / 80);
+        drawBannerText('MAZE CLEARED!', -15, '#55ff55', 22, mazeBannerTimer / 80);
         const a2 = mazeBannerTimer / 80;
         ctx.save();
         ctx.globalAlpha = a2;
@@ -1739,35 +1739,35 @@
         ctx.fillStyle = '#ffff00';
         ctx.shadowColor = '#ffff00';
         ctx.shadowBlur = 20 * SHADOW_MULT;
-        ctx.fillText('PAUSA', W / 2, H / 2 - 20);
+        ctx.fillText('PAUSED', W / 2, H / 2 - 20);
         ctx.font = `12px ${GAME_FONT}`;
         ctx.fillStyle = '#ccc';
         ctx.shadowBlur = 0;
-        ctx.fillText(isMobile ? 'Tocá ⏸' : 'P / Esc', W / 2, H / 2 + 25);
+        ctx.fillText(isMobile ? 'Tap ⏸' : 'P / Esc', W / 2, H / 2 + 25);
       }
 
       ctx.restore();
     }
 
     const deathMessages = [
-      'Theo, eso fue épico. Intentalo de nuevo.',
-      'Casi. CASI. Dale de nuevo.',
-      'El mundo no sabe lo que se viene con vos.',
-      'Eso fue nada. Sos capaz de mucho más.',
-      '¿Eso es todo? Sé que podés más.',
-      'Los grandes siempre fallan antes de ganar.',
-      'La vida es igual al juego: siempre hay otra chance.',
-      'Nadie llegó lejos sin caerse mil veces primero.',
-      'Seguí. Punto.',
-      'Yo también me caí. Después me levanté. Vos también podés.',
+      'Theo, that was epic. Try again.',
+      'So close. SO close. Go again.',
+      'The world has no idea what\'s coming with you.',
+      'That was nothing. You\'re capable of way more.',
+      'Is that all? I know you\'ve got more.',
+      'The greats always fail before they win.',
+      'Life\'s just like the game: there\'s always another chance.',
+      'Nobody got far without falling a thousand times first.',
+      'Keep going. Period.',
+      'I fell too. Then I got up. You can too.',
     ];
 
     const hiScoreMessages = [
-      '¡RÉCORD! Sabía que ibas a romperlo.',
-      '¡NUEVO RÉCORD! No me sorprende para nada.',
-      '¡RÉCORD! Eso es todo tuyo, Theo. Nadie te lo regaló.',
-      '¡RÉCORD SUPERADO! Así se hace, hermano.',
-      '¡NUEVO RÉCORD! Y esto es solo el principio.',
+      'RECORD! I knew you\'d break it.',
+      'NEW RECORD! Not surprised at all.',
+      'RECORD! That\'s all you, Theo. Nobody gave it to you.',
+      'RECORD BEATEN! That\'s how it\'s done, bro.',
+      'NEW RECORD! And this is only the beginning.',
     ];
 
     function endGame() {
@@ -1795,16 +1795,16 @@
 
       overlay.classList.remove('hidden');
       overlay.innerHTML = `
-        <h2>${isNewHiScore ? '🏆 ¡LA ROMPISTE THEO!' : 'TE MORISTE THEO'}</h2>
-        <p>Puntos: <strong style="color:#ffff00">${score}</strong></p>
-        <p>Tu récord: <strong style="color:#ffff00">${hiScore}</strong></p>
-        <p>Nivel: <strong style="color:#ff4444">${speedLevel}</strong></p>
-        ${combo > 2 ? `<p>Mejor combo: <strong style="color:#ffaa00">x${Math.min(combo, 5)}</strong></p>` : ''}
+        <h2>${isNewHiScore ? '🏆 YOU CRUSHED IT THEO!' : 'YOU DIED THEO'}</h2>
+        <p>Score: <strong style="color:#ffff00">${score}</strong></p>
+        <p>Your record: <strong style="color:#ffff00">${hiScore}</strong></p>
+        <p>Level: <strong style="color:#ff4444">${speedLevel}</strong></p>
+        ${combo > 2 ? `<p>Best combo: <strong style="color:#ffaa00">x${Math.min(combo, 5)}</strong></p>` : ''}
         ${top3Html}
         <p style="color:#66ddff; margin-top:10px; font-style:italic; max-width:90%; line-height:1.6; font-family:sans-serif; font-size:14px">${msg}</p>
-        <button id="restart-btn">Dale de nuevo</button>
-        <p style="color:#666; font-size:8px; margin-top:6px">${isMobile ? 'Tocá en cualquier lado' : 'Cualquier tecla'}</p>
-        ${canShare ? '<button class="share-btn" id="share-btn">Compartir</button>' : ''}
+        <button id="restart-btn">Go again</button>
+        <p style="color:#666; font-size:8px; margin-top:6px">${isMobile ? 'Tap anywhere' : 'Any key'}</p>
+        ${canShare ? '<button class="share-btn" id="share-btn">Share</button>' : ''}
       `;
 
       function doRestart() {
@@ -1823,7 +1823,7 @@
       if (canShare) {
         document.getElementById('share-btn').addEventListener('click', (e) => {
           e.stopPropagation();
-          navigator.share({ title: 'Pac-Run', text: `¡Hice ${score} puntos en Pac-Run! ¿Podés superarme? 🟡` }).catch(() => {});
+          navigator.share({ title: 'Pac-Run', text: `I scored ${score} points in Pac-Run! Can you beat me? 🟡` }).catch(() => {});
         });
       }
     }

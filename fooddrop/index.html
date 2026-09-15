@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <title>Fideos Voladores - Juegos de Theo</title>
+  <title>Flying Noodles - Theo's Games</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -96,24 +96,24 @@
   </style>
 </head>
 <body>
-  <a href="../" class="back-link">← VOLVER</a>
+  <a href="../" class="back-link">← BACK</a>
   <div id="wrap">
     <div id="hud">
-      <span>Puntos: <span class="hv" id="hud-score">0</span></span>
-      <span>Nivel: <span class="hv" id="hud-level">1</span></span>
-      <span>Vidas: <span class="hv" id="hud-lives">♥♥♥</span></span>
+      <span>Score: <span class="hv" id="hud-score">0</span></span>
+      <span>Level: <span class="hv" id="hud-level">1</span></span>
+      <span>Lives: <span class="hv" id="hud-lives">♥♥♥</span></span>
     </div>
     <div id="cbox">
       <canvas id="c"></canvas>
       <div id="overlay">
-        <h1>FIDEOS VOLADORES</h1>
-        <p style="font-size:11px; color:#ffff00; margin-bottom:6px">¡Atrapá los ingredientes, Chef Theo!</p>
-        <p>Tocá o presioná ← → para cambiar de dirección</p>
-        <p style="color:#ffaa00; font-size:7px">¡El chef no para nunca!</p>
-        <p>Agarrá 🍅🧀🍳</p>
-        <p style="color:#ff4444">¡Esquivá 🔪👢🪨!</p>
-        <p style="color:#ffdd00">Bonus: 🍝 Espagueti Dorado</p>
-        <button id="play-btn">Jugar</button>
+        <h1>FLYING NOODLES</h1>
+        <p style="font-size:11px; color:#ffff00; margin-bottom:6px">Catch the ingredients, Chef Theo!</p>
+        <p>Tap or press ← → to change direction</p>
+        <p style="color:#ffaa00; font-size:7px">The chef never stops!</p>
+        <p>Grab 🍅🧀🍳</p>
+        <p style="color:#ff4444">Dodge 🔪👢🪨!</p>
+        <p style="color:#ffdd00">Bonus: 🍝 Golden Spaghetti</p>
+        <button id="play-btn">Play</button>
       </div>
     </div>
   </div>
@@ -190,16 +190,16 @@
 
     // --- Items ---
     const INGREDIENTS = [
-      { emoji: '🍅', pts: 10, color: '#ff4444', name: 'Tomate' },
-      { emoji: '🧀', pts: 15, color: '#ffcc00', name: 'Queso' },
-      { emoji: '🍳', pts: 10, color: '#ffeeaa', name: 'Huevo' },
+      { emoji: '🍅', pts: 10, color: '#ff4444', name: 'Tomato' },
+      { emoji: '🧀', pts: 15, color: '#ffcc00', name: 'Cheese' },
+      { emoji: '🍳', pts: 10, color: '#ffeeaa', name: 'Egg' },
     ];
     const BAD_ITEMS = [
-      { emoji: '🔪', color: '#cccccc', name: 'Cuchillo' },
-      { emoji: '👢', color: '#884422', name: 'Bota' },
-      { emoji: '🪨', color: '#888888', name: 'Piedra' },
+      { emoji: '🔪', color: '#cccccc', name: 'Knife' },
+      { emoji: '👢', color: '#884422', name: 'Boot' },
+      { emoji: '🪨', color: '#888888', name: 'Rock' },
     ];
-    const BONUS = { emoji: '🍝', pts: 50, color: '#ffdd00', name: 'Espagueti Dorado' };
+    const BONUS = { emoji: '🍝', pts: 50, color: '#ffdd00', name: 'Golden Spaghetti' };
 
     let state, score, lives, level, items, particles, player,
         spawnTimer, spawnRate, fallSpeed, frameCount, combo,
@@ -638,18 +638,18 @@
     }
 
     const deathMsgs = [
-      'Casi. CASI. Dale de nuevo, Chef.',
-      'Los grandes chefs siempre queman algo primero.',
-      'Eso fue nada. Sos capaz de mucho más.',
-      '¿Eso es todo? Sé que podés más.',
-      'Seguí cocinando. Punto.',
-      'Nadie llegó lejos sin quemar mil platos primero.',
+      'So close. SO close. Go again, Chef.',
+      'Great chefs always burn something first.',
+      'That was nothing. You\'re capable of way more.',
+      'Is that all? I know you\'ve got more.',
+      'Keep cooking. Period.',
+      'Nobody got far without burning a thousand dishes first.',
     ];
     const hiMsgs = [
-      '¡RÉCORD! Sabía que ibas a romperla, Chef.',
-      '¡NUEVO RÉCORD! No me sorprende para nada.',
-      '¡RÉCORD! Eso es todo tuyo, Theo.',
-      '¡RÉCORD SUPERADO! Así se cocina.',
+      'RECORD! I knew you\'d break it, Chef.',
+      'NEW RECORD! Not surprised at all.',
+      'RECORD! That\'s all you, Theo.',
+      'RECORD BEATEN! That\'s how you cook.',
     ];
 
     function endGame() {
@@ -663,13 +663,13 @@
 
       overlay.classList.remove('hidden');
       overlay.innerHTML = `
-        <h1>${isHi ? '🏆 ¡RÉCORD!' : '💥 GAME OVER'}</h1>
-        <p>Puntos: <strong style="color:#ffff00">${score}</strong></p>
-        <p>Nivel: <strong style="color:#ff4444">${level}</strong></p>
-        <p>Récord: <strong style="color:#ffff00">${hi}</strong></p>
+        <h1>${isHi ? '🏆 RECORD!' : '💥 GAME OVER'}</h1>
+        <p>Score: <strong style="color:#ffff00">${score}</strong></p>
+        <p>Level: <strong style="color:#ff4444">${level}</strong></p>
+        <p>Record: <strong style="color:#ffff00">${hi}</strong></p>
         <p style="color:#66ddff; margin-top:8px; font-style:italic; font-family:sans-serif; font-size:13px; max-width:90%; line-height:1.5">${msg}</p>
-        <button id="restart-btn">Dale de nuevo</button>
-        <p style="font-size:7px; color:#555; margin-top:6px">Tocá o presioná cualquier tecla</p>
+        <button id="restart-btn">Go again</button>
+        <p style="font-size:7px; color:#555; margin-top:6px">Tap or press any key</p>
       `;
       document.getElementById('restart-btn').addEventListener('click', restart);
       overlay.addEventListener('click', (e) => { if (!e.target.closest('button')) restart(); });
