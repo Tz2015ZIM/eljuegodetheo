@@ -33,24 +33,7 @@
     .subtitle {
       font-size: 11px;
       color: #fff;
-      margin-bottom: 12px;
-    }
-
-    .lang-toggle {
-      background: none;
-      border: 1px solid #444;
-      border-radius: 4px;
-      color: #888;
-      font-family: inherit;
-      font-size: 8px;
-      padding: 4px 8px;
-      cursor: pointer;
-      margin-bottom: 36px;
-    }
-
-    .lang-toggle:hover {
-      border-color: #ffff00;
-      color: #ffff00;
+      margin-bottom: 48px;
     }
 
     .games-grid {
@@ -123,7 +106,6 @@
 <body>
   <h1>Theo.games</h1>
   <p class="subtitle" id="subtitle">Come on, play.</p>
-  <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()">ES</button>
 
   <div class="games-grid">
     <a href="pacrun/" class="game-card">
@@ -156,23 +138,31 @@
   </div>
 
   <script>
-    const SUBTITLES = { en: 'Come on, play.', es: 'Dale, elegí uno.' };
+    (function () {
+      const subtitle = document.getElementById('subtitle');
+      const original = subtitle.textContent;
+      const spanish = 'Dale, elegí uno.';
 
-    function applyLang(lang) {
-      document.getElementById('subtitle').textContent = SUBTITLES[lang];
-      document.getElementById('lang-toggle').textContent = lang === 'es' ? 'EN' : 'ES';
-      document.documentElement.lang = lang;
-    }
+      function sync() {
+        const translated = document.documentElement.classList.contains('translated-ltr') ||
+          document.documentElement.classList.contains('translated-rtl');
 
-    function toggleLang() {
-      const next = document.documentElement.lang === 'es' ? 'en' : 'es';
-      try { localStorage.setItem('lang', next); } catch (e) {}
-      applyLang(next);
-    }
+        if (translated && document.documentElement.lang === 'es') {
+          if (subtitle.textContent !== spanish) {
+            subtitle.setAttribute('translate', 'no');
+            subtitle.textContent = spanish;
+          }
+        } else if (subtitle.textContent !== original) {
+          subtitle.removeAttribute('translate');
+          subtitle.textContent = original;
+        }
+      }
 
-    let saved = 'en';
-    try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
-    applyLang(saved);
+      new MutationObserver(sync).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'lang'],
+      });
+    })();
   </script>
 </body>
 </html>
